@@ -154,28 +154,37 @@ section{position:relative;z-index:1;padding:6rem 2rem}
 .mi::before{content:"✦";color:var(--indigo);font-size:.65rem}
 
 /* PROJECTS */
-#projects{background:var(--bg)}
-.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.pc{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;position:relative;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s;cursor:default;display:flex;flex-direction:column}
-.pc::before{content:"";position:absolute;top:0;left:-100%;right:100%;height:2px;background:linear-gradient(90deg,var(--indigo),var(--pink),var(--cyan));transition:left .5s cubic-bezier(.16,1,.3,1),right .5s cubic-bezier(.16,1,.3,1);z-index:2}
-.pc:hover::before{left:0;right:0}
-.pc:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(99,102,241,.18)}
-
-/* Project image gallery */
-.pimg-wrap{position:relative;height:200px;overflow:hidden;background:#0a0a18;flex-shrink:0}
-.pimg-wrap img{position:absolute;top:0;left:0;width:50%;height:100%;object-fit:cover;object-position:top}
-.pimg-wrap img:first-child{border-right:1px solid rgba(99,102,241,.2)}
-.pimg-wrap img:last-child{left:50%}
-.pimg-single{width:100%!important;left:0!important;border-right:none!important}
-.pimg-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(7,7,15,.9) 100%);z-index:1}
-
-.pbody{padding:1.25rem;flex:1;display:flex;flex-direction:column}
-.pname{font-family:"Syne",sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.4rem}
-.pdesc{font-size:.82rem;color:rgba(232,232,240,.62);line-height:1.62;margin-bottom:.75rem;flex:1}
-.ptechs{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.75rem}
-.ptag{padding:.18rem .55rem;border-radius:100px;background:rgba(247,37,133,.08);border:1px solid rgba(247,37,133,.2);font-size:.7rem;color:var(--pink)}
-.vcbtn{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .9rem;border-radius:100px;border:1.5px solid rgba(99,102,241,.35);background:rgba(99,102,241,.07);color:var(--indigo);font-size:.76rem;font-weight:600;transition:all .25s;align-self:flex-start}
-.vcbtn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,245,255,.08);box-shadow:0 0 16px rgba(0,245,255,.15);transform:translateY(-2px)}
+#projects{padding:100px 0}
+.pg{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px}
+.pc{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
+.pc:hover{transform:translateY(-8px);border-color:var(--indigo);box-shadow:0 24px 60px rgba(108,99,255,.15)}
+.psc{background:linear-gradient(135deg,rgba(108,99,255,.12),rgba(0,229,255,.08));padding:24px;display:flex;justify-content:center;gap:16px;min-height:200px;align-items:flex-end;position:relative;overflow:hidden}
+.psc::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 80%,rgba(108,99,255,.15),transparent 70%)}
+.pf{width:90px;background:#111;border-radius:16px;padding:6px;border:2px solid rgba(255,255,255,.12);box-shadow:0 16px 40px rgba(0,0,0,.5);position:relative;z-index:1;transition:transform .3s;cursor:pointer}
+.pc:hover .pf:first-child{transform:translateX(-6px) rotate(-3deg) scale(1.03)}
+.pc:hover .pf:last-child{transform:translateX(6px) rotate(3deg) scale(1.03)}
+.ps{width:100%;border-radius:10px;overflow:hidden;aspect-ratio:9/18}
+.ps img{width:100%;height:100%;object-fit:cover;display:block}
+.pb{padding:24px}
+.pt{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:8px}
+.pd{color:var(--muted);font-size:.85rem;line-height:1.7;margin-bottom:14px}
+.ptgs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.ptg{font-size:.7rem;font-weight:600;padding:3px 10px;border-radius:100px;background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.2);color:var(--indigo)}
+.pac{display:flex;gap:8px}
+.pab{flex:1;padding:9px 14px;border-radius:10px;font-size:.8rem;font-weight:600;border:1px solid var(--glass-border);background:transparent;color:var(--text);cursor:pointer;text-decoration:none;transition:background .2s,border-color .2s,transform .2s;text-align:center;display:inline-block;font-family:'DM Sans',sans-serif}
+.pab:hover{background:rgba(108,99,255,.12);border-color:var(--indigo);transform:translateY(-1px)}
+.pab.pp2{background:linear-gradient(135deg,var(--indigo),var(--cyan));border-color:transparent;color:#fff}
+.pab.pp2:hover{box-shadow:0 6px 20px rgba(108,99,255,.4)}
+/* LIGHTBOX */
+#lb{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.93);backdrop-filter:blur(10px);align-items:center;justify-content:center}
+#lb.open{display:flex}
+#lb img{max-width:340px;max-height:85vh;border-radius:16px;border:2px solid var(--glass-border);box-shadow:0 0 60px rgba(108,99,255,.3)}
+.lbc{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:var(--glass);border:1px solid var(--glass-border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--text);transition:.2s;font-family:'DM Sans',sans-serif}
+.lbc:hover{background:rgba(255,60,172,.2)}
+.lbn{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;background:var(--glass);border:1px solid var(--glass-border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--text);transition:.2s;font-family:'DM Sans',sans-serif}
+.lbn:hover{border-color:var(--indigo);background:rgba(108,99,255,.15)}
+#lbpv{left:20px}
+#lbnx{right:20px}
 
 /* EDUCATION */
 #education{background:var(--bg2)}
@@ -467,7 +476,7 @@ footer span{color:var(--pink)}
           <div><div class="colbl">Portfolio</div><div class="coval">ahmed-portfolio-five-blush.vercel.app ↗</div></div>
         </a>
         <div class="cv-center reveal-left" style="transition-delay:.6s">
-          <a href="Ahmed_Safwat_Kamal_CV.pdf" download class="cv-download">
+          <a href="Ahmed_Safwat_Kamal_CV_.pdf" download class="cv-download">
             ⬇️ Download CV (PDF)
           </a>
         </div>
